@@ -4,17 +4,31 @@
     <div class="bg-white rounded-2xl shadow-xl p-8">
 
         {{-- Header --}}
-        
         <div class="mb-8 flex items-center justify-between">
-    <div>
-        <h1 class="text-3xl font-bold text-slate-800">My To-Do List</h1>
-        <p class="text-slate-500 mt-1">Keep your day organized and focused.</p>
-    </div>
-    <div class="text-right">
-        <span class="text-2xl font-bold text-indigo-600">{{ $completed }}/{{ $total }}</span>
-        <p class="text-slate-400 text-xs mt-0.5">completed</p>
-    </div>
-</div>
+            <div>
+                <h1 class="text-3xl font-bold text-slate-800">My To-Do List</h1>
+                <p class="text-slate-500 mt-1">Keep your day organized and focused.</p>
+            </div>
+            <div class="text-right">
+                <span class="text-2xl font-bold text-indigo-600">{{ $completed }}/{{ $total }}</span>
+                <p class="text-slate-400 text-xs mt-0.5">completed</p>
+            </div>
+        </div>
+
+        {{-- Filter Tabs --}}
+        <div class="flex gap-2 mb-6">
+            @foreach(['all' => 'All', 'active' => 'Active', 'completed' => 'Completed'] as $key => $label)
+                
+                  <a  href="{{ route('tasks.index', $key === 'all' ? [] : ['filter' => $key]) }}"
+                    class="px-4 py-2 rounded-xl text-sm font-medium transition
+                        {{ $filter === $key
+                            ? 'bg-indigo-600 text-white shadow-md'
+                            : 'bg-slate-100 text-slate-500 hover:bg-slate-200' }}"
+                >
+                    {{ $label }}
+                </a>
+            @endforeach
+        </div>
 
         {{-- Flash Messages --}}
         @if(session('success'))
@@ -52,7 +66,7 @@
         {{-- Task List --}}
         <ul class="space-y-3">
             @forelse($tasks as $task)
-                <li class="flex items-center justify-between gap-4 border border-slate-100 rounded-xl px-4 py-3 hover:border-slate-300 hover:shadow-sm transition group {{ $task->done ? 'bg-slate-50' : 'bg-white' }}">
+                <li class="flex items-center justify-between gap-4 border border-slate-100 rounded-xl px-4 py-3 hover:border-slate-300 hover:shadow-sm transition {{ $task->done ? 'bg-slate-50' : 'bg-white' }}">
 
                     {{-- Toggle + Text / Edit Form --}}
                     <div class="flex items-center gap-3 flex-1 min-w-0">
@@ -125,7 +139,13 @@
                 </li>
             @empty
                 <li class="text-center text-slate-400 text-sm py-8">
-                    No tasks yet. Add your first one above.
+                    @if($filter === 'active')
+                        No active tasks. Well done!
+                    @elseif($filter === 'completed')
+                        No completed tasks yet.
+                    @else
+                        No tasks yet. Add your first one above.
+                    @endif
                 </li>
             @endforelse
         </ul>
@@ -133,7 +153,7 @@
 
     {{-- Inline Edit Script --}}
     <script>
-        document.querySelectorAll('.task-item, li').forEach(item => {
+        document.querySelectorAll('li').forEach(item => {
             const editBtn   = item.querySelector('.edit-btn');
             const cancelBtn = item.querySelector('.cancel-btn');
             const taskText  = item.querySelector('.task-text');

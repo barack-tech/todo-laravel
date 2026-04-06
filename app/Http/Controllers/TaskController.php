@@ -7,14 +7,20 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
-    {
-         $tasks      = Task::latest()->get();
-         $total      = $tasks->count();
-         $completed  = $tasks->where('done', true)->count();
+    public function index(string $filter = 'all')
+{
+    $allTasks  = Task::latest()->get();
+    $total     = $allTasks->count();
+    $completed = $allTasks->where('done', true)->count();
 
-         return view('tasks.index', compact('tasks', 'total', 'completed'));
-    }
+    $tasks = match($filter) {
+        'active'    => $allTasks->where('done', false)->values(),
+        'completed' => $allTasks->where('done', true)->values(),
+        default     => $allTasks,
+    };
+
+    return view('tasks.index', compact('tasks', 'total', 'completed', 'filter'));
+}
 
     public function store(Request $request)
     {
