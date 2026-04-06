@@ -4,10 +4,17 @@
     <div class="bg-white rounded-2xl shadow-xl p-8">
 
         {{-- Header --}}
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-800">My To-Do List</h1>
-            <p class="text-slate-500 mt-1">Keep your day organized and focused.</p>
-        </div>
+        
+        <div class="mb-8 flex items-center justify-between">
+    <div>
+        <h1 class="text-3xl font-bold text-slate-800">My To-Do List</h1>
+        <p class="text-slate-500 mt-1">Keep your day organized and focused.</p>
+    </div>
+    <div class="text-right">
+        <span class="text-2xl font-bold text-indigo-600">{{ $completed }}/{{ $total }}</span>
+        <p class="text-slate-400 text-xs mt-0.5">completed</p>
+    </div>
+</div>
 
         {{-- Flash Messages --}}
         @if(session('success'))

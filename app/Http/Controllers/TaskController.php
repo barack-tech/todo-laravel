@@ -9,9 +9,11 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::latest()->get();
+         $tasks      = Task::latest()->get();
+         $total      = $tasks->count();
+         $completed  = $tasks->where('done', true)->count();
 
-        return view('tasks.index', compact('tasks'));
+         return view('tasks.index', compact('tasks', 'total', 'completed'));
     }
 
     public function store(Request $request)
