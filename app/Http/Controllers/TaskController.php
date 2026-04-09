@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index(string $filter = 'all')
-{
-    $allTasks  = Task::latest()->get();
-    $total     = $allTasks->count();
-    $completed = $allTasks->where('done', true)->count();
+    {
+        $allTasks  = Auth::user()->tasks()->latest()->get();
+        $total     = $allTasks->count();
+        $completed = $allTasks->where('done', true)->count();
 
-    $tasks = match($filter) {
-        'active'    => $allTasks->where('done', false)->values(),
-        'completed' => $allTasks->where('done', true)->values(),
-        default     => $allTasks,
-    };
+        $tasks = match($filter) {
+            'active'    => $allTasks->where('done', false)->values(),
+            'completed' => $allTasks->where('done', true)->values(),
+            default     => $allTasks,
+        };
 
-    return view('tasks.index', compact('tasks', 'total', 'completed', 'filter'));
-}
+        return view('tasks.index', compact('tasks', 'total', 'completed', 'filter'));
+    }
 
     public function store(Request $request)
     {
@@ -28,7 +29,7 @@ class TaskController extends Controller
             'task' => 'required|string|max:255',
         ]);
 
-        Task::create($validated);
+        Auth::user()->tasks()->create($validated);
 
         return redirect()->route('tasks.index')
             ->with('success', 'Task added successfully.');
@@ -36,6 +37,8 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task)
     {
+        $this->authorize('update', $task);
+
         $validated = $request->validate([
             'task' => 'required|string|max:255',
         ]);
@@ -48,6 +51,8 @@ class TaskController extends Controller
 
     public function toggle(Task $task)
     {
+        $this->authorize('update', $task);
+
         $task->update(['done' => !$task->done]);
 
         return redirect()->route('tasks.index')
@@ -56,6 +61,8 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
+        $this->authorize('delete', $task);
+
         $task->delete();
 
         return redirect()->route('tasks.index')
