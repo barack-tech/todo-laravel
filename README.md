@@ -29,6 +29,46 @@ A task management application built with Laravel 12, MySQL, and Tailwind CSS. Bu
 
 ---
 
+## Project Structure 
 
+```
+todo-laravel/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── TaskController.php       # Handles all task actions
+│   │   └── Auth/                    # Breeze authentication controllers
+│   ├── Models/
+│   │   ├── Task.php                 # Task model
+│   │   └── User.php                 # User model with task relationship
+│   └── Policies/
+│       └── TaskPolicy.php           # Authorizes task actions per user
+├── database/
+│   └── migrations/                  # All database migrations
+├── resources/
+│   ├── css/
+│   │   └── app.css                  # Tailwind entry point
+│   └── views/
+│       ├── layouts/
+│       │   ├── app.blade.php        # Main layout
+│       │   └── navigation.blade.php # Nav bar
+│       ├── tasks/
+│       │   └── index.blade.php      # Task list UI
+│       └── auth/                    # Breeze auth views
+├── routes/
+│   ├── web.php                      # Application routes
+│   └── auth.php                     # Breeze auth routes
+└── vite.config.js                   # Vite configuration
+```
 
+---
+
+## Requirements
+
+- PHP 8.2+
+- Composer
+- MySQL
+- Node.js & npm
+- A local server environment (XAMPP or similar)
+
+---
 
