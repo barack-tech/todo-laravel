@@ -1,10 +1,34 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Todo
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A task management application built with Laravel 12, MySQL, and Tailwind CSS. Built as a progression from a raw PHP implementation to a fully structured MVC application with authentication and user-scoped data.
+
+---
+
+## Features
+
+- User registration, login, and logout
+- Each user sees only their own tasks
+- Create, edit, delete, and toggle tasks
+- Task completion counter
+- Filter tasks by All, Active, and Completed
+- Flash messages on every action
+- Server-side form validation
+- Route protection — all task routes require authentication
+- Task authorization — users cannot modify another user's tasks
+
+---
+
+## Tech Stack
+
+- **Backend** — Laravel 12, PHP 8.2
+- **Database** — MySQL
+- **Frontend** — Blade templating, Tailwind CSS
+- **Build Tool** — Vite
+- **Authentication** — Laravel Breeze
+- **Version Control** — Git & GitHub
+
+---
+
+
 
 

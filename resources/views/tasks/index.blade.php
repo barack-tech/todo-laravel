@@ -148,7 +148,15 @@
                     @endif
                 </li>
             @endforelse
+        
         </ul>
+
+            {{-- Pagination --}}
+            @if($tasks->hasPages())
+                <div class="mt-6">
+                    {{ $tasks->appends(['filter' => $filter])->links() }}
+                </div>
+            @endif
     </div>
 
     {{-- Inline Edit Script --}}

@@ -13,17 +13,17 @@ class TaskController extends Controller
         use AuthorizesRequests;
     public function index(string $filter = 'all')
     {
-        $allTasks  = Auth::user()->tasks()->latest()->get();
-        $total     = $allTasks->count();
-        $completed = $allTasks->where('done', true)->count();
+    $allTasks  = Auth::user()->tasks()->latest()->get();
+    $total     = $allTasks->count();
+    $completed = $allTasks->where('done', true)->count();
 
-        $tasks = match($filter) {
-            'active'    => $allTasks->where('done', false)->values(),
-            'completed' => $allTasks->where('done', true)->values(),
-            default     => $allTasks,
-        };
+    $tasks = match($filter) {
+        'active'    => Auth::user()->tasks()->where('done', false)->latest()->paginate(20),
+        'completed' => Auth::user()->tasks()->where('done', true)->latest()->paginate(20),
+        default     => Auth::user()->tasks()->latest()->paginate(20),
+    };
 
-        return view('tasks.index', compact('tasks', 'total', 'completed', 'filter'));
+    return view('tasks.index', compact('tasks', 'total', 'completed', 'filter'));
     }
 
     public function store(Request $request)
