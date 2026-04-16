@@ -6,7 +6,7 @@
         {{-- Header --}}
         <div class="mb-8 flex items-center justify-between">
             <div>
-                <h1 class="text-3xl font-bold text-slate-800">Task Manager </h1>
+                <h1 class="text-3xl font-bold text-slate-800">Taskly Task Manager </h1>
                 <p class="text-slate-500 mt-1">Keep your day organized and focused.</p>
             </div>
             <div class="text-right">

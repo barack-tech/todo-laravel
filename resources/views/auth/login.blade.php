@@ -93,4 +93,21 @@
                 {{-- Submit --}}
                 <button
                     type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white fon
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl text-sm transition shadow-md hover:shadow-lg"
+                >
+                    Sign In
+                </button>
+            </form>
+        </div>
+
+        {{-- Register Link --}}
+        <p class="text-center text-sm text-slate-500 mt-6">
+            Don't have an account?
+            <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-700 font-medium transition">
+                Create one
+            </a>
+        </p>
+    </div>
+
+</body>
+</html>

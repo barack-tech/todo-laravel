@@ -53,3 +53,4 @@ class User extends Authenticatable
     return $this->hasMany(Task::class);
 }
 }
+// This is a Laravel Eloquent model for a "User". It defines the properties that can be mass assigned (name, email, password) and hides the password and remember_token attributes when the model is serialized. It also casts the email_verified_at attribute to a datetime and the password to a hashed value. Additionally, it defines a relationship indicating that a user can have many tasks.
