@@ -16,7 +16,7 @@
         {{-- Logo / App Name --}}
         <div class="text-center mb-8">
             <a href="/" class="text-2xl font-bold text-indigo-600 tracking-tight">
-                Laravel Todo
+                TaskFlow
             </a>
             <p class="text-slate-500 text-sm mt-1">Create an account to get started.</p>
         </div>

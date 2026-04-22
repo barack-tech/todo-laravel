@@ -7,13 +7,19 @@
             <!-- Logo / App Name -->
             <div class="flex items-center">
                 <a href="{{ route('tasks.index') }}" class="text-indigo-600 font-bold text-lg tracking-tight">
-                    TASKLY
+                    Taskflow
                 </a>
             </div>
 
             <!-- Desktop Right Side -->
             <div class="hidden sm:flex sm:items-center gap-4">
                 <span class="text-sm text-slate-500">{{ Auth::user()->name }}</span>
+
+                @if(Auth::user()->isAdmin())
+                    <a href="{{ route('admin.index') }}" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition">
+                        Admin
+                    </a>
+                @endif
 
                 <a href="{{ route('profile.edit') }}" class="text-sm text-slate-500 hover:text-slate-700 transition">
                     Profile
@@ -47,6 +53,12 @@
         </div>
 
         <div class="max-w-2xl mx-auto px-4 pb-3 space-y-1 border-t border-slate-100 pt-3">
+             @if(Auth::user()->isAdmin())
+                <a href="{{ route('admin.index') }}" class="block text-sm text-indigo-600 hover:text-indigo-700 font-medium py-1 transition">
+                     Admin 
+                </a>
+            @endif 
+
             <a href="{{ route('profile.edit') }}" class="block text-sm text-slate-600 hover:text-slate-800 py-1 transition">
                 Profile
             </a>
