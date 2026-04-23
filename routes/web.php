@@ -34,8 +34,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
     Route::delete('/tasks/{task}', [AdminController::class, 'destroyTask'])->name('tasks.destroy');
       // Admin Dashboard route
-    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
-    Route::get('/tasks', [AdminController::class, 'tasks'])->name('admin.tasks');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/tasks', [AdminController::class, 'tasks'])->name('tasks');
+    
 });
 
 require __DIR__.'/auth.php';

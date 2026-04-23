@@ -28,7 +28,7 @@
             {{-- Nav Links --}}
             <nav class="flex-1 px-4 py-6 space-y-1">
                 
-                    href="{{ route('admin.index') }}"
+                    <a href="{{ route('admin.index') }}"
                     class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition
                         {{ request()->routeIs('admin.index') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800' }}"
                 >
@@ -39,7 +39,7 @@
                 </a>
 
                 
-                    href="{{ route('admin.users') }}"
+                    <a href="{{ route('admin.users') }}"
                     class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition
                         {{ request()->routeIs('admin.users') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800' }}"
                 >
@@ -50,7 +50,7 @@
                 </a>
 
                 
-                    href="{{ route('admin.tasks') }}"
+                    <a href="{{ route('admin.tasks') }}"
                     class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition
                         {{ request()->routeIs('admin.tasks') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800' }}"
                 >
