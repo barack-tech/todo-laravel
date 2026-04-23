@@ -23,9 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Admin Dashboard route
-    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
-    Route::get('/tasks', [AdminController::class, 'tasks'])->name('admin.tasks');
+  
 });
 
 // Admin routes
@@ -35,6 +33,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::patch('/users/{user}/demote', [AdminController::class, 'demote'])->name('users.demote');
     Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
     Route::delete('/tasks/{task}', [AdminController::class, 'destroyTask'])->name('tasks.destroy');
+      // Admin Dashboard route
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/tasks', [AdminController::class, 'tasks'])->name('admin.tasks');
 });
 
 require __DIR__.'/auth.php';

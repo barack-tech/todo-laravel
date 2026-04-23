@@ -67,4 +67,16 @@ class AdminController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Task deleted successfully.');
     }
+
+    public function users()
+    {
+        $users = User::withCount('tasks')->latest()->get();
+        return view('admin.users', compact('users'));
+    }
+
+    public function tasks()
+    {
+        $tasks = Task::with('user')->latest()->paginate(20);
+        return view('admin.tasks', compact('tasks'));
+    }      
 }
