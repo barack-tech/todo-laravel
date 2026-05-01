@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/tasks/{{taskId}}/toggle
+method: PATCH
+headers:
+  Authorization: Bearer {{authToken}}
+  Accept: application/json
+body:
+  type: json
+  content: ""
+order: 3000000000000002

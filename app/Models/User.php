@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Task;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-class User extends Authenticatable implements MustVerifyEmail
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// Open tinker: php artisan tinker
+// check mail host in .env file : echo env('MAIL_HOST');
+// clear config cache : php artisan config:cache
+class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
+    
     use HasFactory, Notifiable, HasApiTokens;
 
     protected $fillable = [
@@ -49,3 +52,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role === 'user';
     }
 }
+
+
+// check mail host in .env file : echo env('MAIL_HOST');

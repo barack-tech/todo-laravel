@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/tasks
+method: GET
+headers:
+  Authorization: Bearer 4|ZsVFxCl3KEj0iYIi60St0931l4LxSsupZWc4aVQrb87b4262
+  Accept: application/json
+body:
+  type: json
+  content: ""
+order: 1281228764879373

@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/tasks/{{taskId}}
+method: DELETE
+headers:
+  Authorization: Bearer {{authToken}}
+  Accept: application/json
+order: 3000000000000003

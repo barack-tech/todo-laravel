@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/tasks/{{taskId}}
+method: PATCH
+headers:
+  Authorization: Bearer {{authToken}}
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: "{\"task\": \"Updated task title\"}"
+order: 3000000000000001
