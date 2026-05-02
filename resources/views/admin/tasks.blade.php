@@ -52,9 +52,13 @@
                                 <form action="{{ route('admin.tasks.destroy', $task) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-xs px-3 py-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition font-medium">
-                                        Delete
-                                    </button>
+                                    <button
+    type="submit"
+    onclick="return confirm('Are you sure you want to delete this task?')"
+    class="text-xs px-3 py-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition font-medium"
+>
+    Delete
+</button>
                                 </form>
                             </td>
                         </tr>
