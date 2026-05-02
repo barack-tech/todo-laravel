@@ -127,11 +127,13 @@
                         <form action="{{ route('tasks.destroy', $task) }}" method="POST">
                             @csrf
                             @method('DELETE')
+                            
                             <button
                                 type="submit"
+                                onclick="return confirm('Are you sure you want to delete this task?')"
                                 class="w-8 h-8 flex items-center justify-center rounded-lg bg-red-50 hover:bg-red-100 text-red-400 hover:text-red-600 transition text-lg"
                                 aria-label="Delete task"
-                            >
+>
                                 ×
                             </button>
                         </form>
